@@ -1,4 +1,4 @@
-# movie
+# movie entity
 
 (some of the) attributes:
 - name
