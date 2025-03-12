@@ -2,9 +2,7 @@
 
 (some of the) attributes:
 - name
-- genre(s)
-- release date
+- genre
+- director
+- description
 - rating
-- actors
-- awards
-- box office
