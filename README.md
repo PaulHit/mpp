@@ -1,8 +1,10 @@
-# movie
+# movie entity
 
-(some of the) attributes:
+attributes:
+
+- id
 - name
-- genre
-- director
-- description
+- genre(s)
+- release date
 - rating
+- description
