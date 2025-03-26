@@ -40,6 +40,7 @@ export default function TagInput({
 	return (
 		<div
 			className={`flex flex-wrap items-center gap-2 border border-gray-300 text-white p-2 rounded w-full ${className}`}
+			style={{ maxHeight: "66px", overflowY: "auto" }}
 		>
 			{/* render existing tags */}
 			{tags.map((tag, index) => (
