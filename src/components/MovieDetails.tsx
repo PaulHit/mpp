@@ -63,7 +63,7 @@ export default function MovieDetails({
 						placeholder="Enter genres (press space or enter to add)"
 						className="flex-nowrap overflow-x-auto whitespace-nowrap"
 					/>
-					<label className="block mb-2">Rating (0-10)</label>
+					<label className="block mb-2">Rating (1-10)</label>
 					<input
 						type="number"
 						value={updatedMovie.rating}

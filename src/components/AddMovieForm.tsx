@@ -20,7 +20,7 @@ export default function AddMovieForm({
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		if (!movie.name || movie.rating < 0 || movie.rating > 10) {
+		if (!movie.name || movie.rating < 1 || movie.rating > 10) {
 			alert("Please provide valid inputs.");
 			return;
 		}
@@ -62,7 +62,7 @@ export default function AddMovieForm({
 			/>
 			<input
 				type="number"
-				placeholder="Rating (0-10)"
+				placeholder="Rating (1-10)"
 				value={movie.rating}
 				onChange={(e) =>
 					setMovie({ ...movie, rating: parseFloat(e.target.value) })
