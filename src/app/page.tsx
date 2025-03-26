@@ -4,9 +4,10 @@ import { useState } from "react";
 import AddMovieForm from "@/components/AddMovieForm";
 import { Movie } from "@/types/movie";
 import MovieDetails from "@/components/MovieDetails";
+import { getMockMovies } from "@/data/mockMovies";
 
 export default function MoviesPage() {
-	const [movies, setMovies] = useState<Movie[]>([]);
+	const [movies, setMovies] = useState<Movie[]>(getMockMovies());
 	const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 	const [filterGenre, setFilterGenre] = useState<string>("");
 	const [sortKey, setSortKey] = useState<"name" | "releaseDate" | "rating">(
