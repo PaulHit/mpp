@@ -45,7 +45,8 @@ export default function TagInput({
 			{tags.map((tag, index) => (
 				<div
 					key={index}
-					className="flex items-center bg-blue-500 text-white px-3 py-1 rounded-full"
+					onClick={() => handleRemoveTag(index)}
+					className="flex items-center bg-blue-500 text-white px-3 py-1 rounded-full cursor-pointer hover:bg-blue-600"
 				>
 					<span>{tag}</span>
 					<button
