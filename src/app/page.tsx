@@ -13,6 +13,7 @@ export default function MoviesPage() {
 	const [sortKey, setSortKey] = useState<"name" | "releaseDate" | "rating">(
 		"name"
 	);
+	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc"); // New state for sorting direction
 
 	const addMovie = (movie: Movie) => setMovies((prev) => [...prev, movie]);
 	const removeMovie = (id: string) =>
@@ -32,13 +33,15 @@ export default function MoviesPage() {
 	);
 
 	const sortedMovies = [...filteredMovies].sort((a, b) => {
-		if (sortKey === "name") return a.name.localeCompare(b.name);
+		let comparison = 0;
+		if (sortKey === "name") comparison = a.name.localeCompare(b.name);
 		if (sortKey === "releaseDate")
-			return (
-				new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime()
-			);
-		if (sortKey === "rating") return b.rating - a.rating;
-		return 0;
+			comparison =
+				new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime();
+		if (sortKey === "rating") comparison = a.rating - b.rating;
+
+		// Reverse the order if sortDirection is "desc"
+		return sortDirection === "asc" ? comparison : -comparison;
 	});
 
 	return (
@@ -69,6 +72,14 @@ export default function MoviesPage() {
 					<option value="releaseDate">Release Date</option>
 					<option value="rating">Rating</option>
 				</select>
+				<button
+					onClick={() =>
+						setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"))
+					}
+					className="ml-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500"
+				>
+					{sortDirection === "asc" ? "Sort Descending" : "Sort Ascending"}
+				</button>
 			</div>
 			<table className="table-auto w-full border-collapse border border-gray-300">
 				<thead>
