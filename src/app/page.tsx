@@ -22,6 +22,11 @@ export default function MoviesPage() {
 			prev.map((movie) => (movie.id === updatedMovie.id ? updatedMovie : movie))
 		);
 
+	// Extract unique genres from the movies list
+	const uniqueGenres = Array.from(
+		new Set(movies.flatMap((movie) => movie.genres))
+	);
+
 	const filteredMovies = movies.filter((movie) =>
 		filterGenre ? movie.genres.includes(filterGenre) : true
 	);
@@ -41,14 +46,19 @@ export default function MoviesPage() {
 			<h1 className="text-2xl font-bold mb-4">Movie Collection</h1>
 			<AddMovieForm onAdd={addMovie} />
 			<div className="my-4">
-				<label>Filter by Genre:</label>
-				<input
-					type="text"
+				<label>Filter by Genre: </label>
+				<select
 					value={filterGenre}
 					onChange={(e) => setFilterGenre(e.target.value)}
-					placeholder="Enter genre"
-					className="border p-2 ml-2"
-				/>
+					className="border border-gray-300 p-2 rounded w-full md:w-1/12 appearance-none"
+				>
+					<option value="">All Genres</option>
+					{uniqueGenres.map((genre) => (
+						<option key={genre} value={genre}>
+							{genre}
+						</option>
+					))}
+				</select>
 				<label className="ml-4">Sort by: </label>
 				<select
 					value={sortKey}
@@ -90,7 +100,7 @@ export default function MoviesPage() {
 								</button>
 								<button
 									onClick={() => removeMovie(movie.id)}
-									className="bg-red-600 text-white-px-2 py-1 rounded hover:bg-red-500 cursor-pointer"
+									className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-500 cursor-pointer"
 								>
 									Delete
 								</button>
