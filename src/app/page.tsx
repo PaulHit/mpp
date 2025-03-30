@@ -13,7 +13,7 @@ export default function MoviesPage() {
 	const [sortKey, setSortKey] = useState<"name" | "releaseDate" | "rating">(
 		"name"
 	);
-	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc"); // New state for sorting direction
+	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
 
 	const addMovie = (movie: Movie) => setMovies((prev) => [...prev, movie]);
 	const removeMovie = (id: string) =>
@@ -43,6 +43,12 @@ export default function MoviesPage() {
 		// Reverse the order if sortDirection is "desc"
 		return sortDirection === "asc" ? comparison : -comparison;
 	});
+
+	// Calculate statistics
+	const highestRatedMovie = Math.max(...movies.map((movie) => movie.rating));
+	const lowestRatedMovie = Math.min(...movies.map((movie) => movie.rating));
+	const averageRating =
+		movies.reduce((sum, movie) => sum + movie.rating, 0) / movies.length || 0;
 
 	return (
 		<div className="p-4">
@@ -101,7 +107,19 @@ export default function MoviesPage() {
 							<td className="border border-gray-300 p-2">
 								{movie.releaseDate}
 							</td>
-							<td className="border border-gray-300 p-2">{movie.rating}</td>
+							<td
+								className={`border border-gray-300 p-2 ${
+									movie.rating === highestRatedMovie
+										? "bg-green-800"
+										: movie.rating === lowestRatedMovie
+											? "bg-red-800"
+											: Math.abs(movie.rating - averageRating) < 0.1
+												? "bg-yellow-800"
+												: ""
+								}`}
+							>
+								{movie.rating}
+							</td>
 							<td className="border border-gray-300 p-2">
 								<button
 									onClick={() => setSelectedMovie(movie)}
