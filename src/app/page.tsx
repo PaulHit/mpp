@@ -14,6 +14,10 @@ export default function MoviesPage() {
 		"name"
 	);
 	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+	const [currentPage, setCurrentPage] = useState<number>(1);
+
+	const moviesPerPage = 5;
+	const totalPages = Math.ceil(movies.length / moviesPerPage);
 
 	const addMovie = (movie: Movie) => setMovies((prev) => [...prev, movie]);
 	const removeMovie = (id: string) =>
@@ -43,6 +47,12 @@ export default function MoviesPage() {
 		// Reverse the order if sortDirection is "desc"
 		return sortDirection === "asc" ? comparison : -comparison;
 	});
+
+	// get movies from the current page
+	const paginatedMovies = sortedMovies.slice(
+		(currentPage - 1) * moviesPerPage,
+		currentPage * moviesPerPage
+	);
 
 	// Calculate statistics
 	const highestRatedMovie = Math.max(...movies.map((movie) => movie.rating));
@@ -98,7 +108,7 @@ export default function MoviesPage() {
 					</tr>
 				</thead>
 				<tbody>
-					{sortedMovies.map((movie) => (
+					{paginatedMovies.map((movie) => (
 						<tr key={movie.id}>
 							<td className="border border-gray-300 p-2">{movie.name}</td>
 							<td className="border border-gray-300 p-2">
@@ -138,6 +148,38 @@ export default function MoviesPage() {
 					))}
 				</tbody>
 			</table>
+
+			{/* Pagination Controls */}
+			<div className="flex justify-between items-center mt-4">
+				<button
+					onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+					disabled={currentPage === 1}
+					className={`px-4 py-2 rounded ${
+						currentPage === 1
+							? "bg-gray-300 text-gray-500 cursor-not-allowed"
+							: "bg-blue-600 text-white hover:bg-blue-500"
+					}`}
+				>
+					Previous
+				</button>
+				<span className="text-gray-700">
+					Page {currentPage} of {totalPages}
+				</span>
+				<button
+					onClick={() =>
+						setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+					}
+					disabled={currentPage === totalPages}
+					className={`px-4 py-2 rounded ${
+						currentPage === totalPages
+							? "bg-gray-300 text-gray-500 cursor-not-allowed"
+							: "bg-blue-600 text-white hover:bg-blue-500"
+					}`}
+				>
+					Next
+				</button>
+			</div>
+
 			{selectedMovie && (
 				<MovieDetails
 					movie={selectedMovie}
