@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Movie } from "@/app/types/movie";
 import TagInput from "@/app/components/TagInput";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AddMovieForm({
 	onAdd,
@@ -10,7 +11,7 @@ export default function AddMovieForm({
 	onAdd: (movie: Movie) => void;
 }) {
 	const [movie, setMovie] = useState<Movie>({
-		id: crypto.randomUUID(),
+		id: uuidv4(),
 		name: "",
 		releaseDate: "",
 		genres: [],
@@ -28,7 +29,7 @@ export default function AddMovieForm({
 		onAdd(movie);
 		setMovie({
 			...movie,
-			id: crypto.randomUUID(),
+			id: uuidv4(),
 			name: "",
 			releaseDate: "",
 			genres: [],
