@@ -5,6 +5,7 @@ import AddMovieForm from "@/app/components/AddMovieForm";
 import { Movie } from "@/app/types/movie";
 import MovieDetails from "@/app/components/MovieDetails";
 import { getMockMovies } from "@/app/data/mockMovies";
+import MoviesCharts from "@/app/components/MoviesCharts";
 
 export default function MoviesPage() {
 	const [movies, setMovies] = useState<Movie[]>(getMockMovies());
@@ -187,6 +188,9 @@ export default function MoviesPage() {
 					onClose={() => setSelectedMovie(null)}
 				/>
 			)}
+
+			{/* Charts */}
+			<MoviesCharts />
 		</div>
 	);
 }
