@@ -1,4 +1,4 @@
-import { Movie } from "@/types/movie";
+import { Movie } from "@/app/types/movie";
 
 export const getMockMovies = (): Movie[] => {
 	return [

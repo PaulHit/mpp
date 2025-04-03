@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Movie } from "@/types/movie";
-import TagInput from "@/components/TagInput";
+import { Movie } from "@/app/types/movie";
+import TagInput from "@/app/components/TagInput";
 
 export default function MovieDetails({
 	movie,

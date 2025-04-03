@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import AddMovieForm from "@/components/AddMovieForm";
-import { Movie } from "@/types/movie";
-import MovieDetails from "@/components/MovieDetails";
-import { getMockMovies } from "@/data/mockMovies";
+import AddMovieForm from "@/app/components/AddMovieForm";
+import { Movie } from "@/app/types/movie";
+import MovieDetails from "@/app/components/MovieDetails";
+import { getMockMovies } from "@/app/data/mockMovies";
 
 export default function MoviesPage() {
 	const [movies, setMovies] = useState<Movie[]>(getMockMovies());
