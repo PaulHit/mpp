@@ -158,7 +158,7 @@ export default function MoviesPage() {
 					className={`px-4 py-2 rounded ${
 						currentPage === 1
 							? "bg-gray-300 text-gray-500 cursor-not-allowed"
-							: "bg-blue-600 text-white hover:bg-blue-500"
+							: "bg-blue-600 text-white hover:bg-blue-500 cursor-pointer"
 					}`}
 				>
 					Previous
@@ -174,7 +174,7 @@ export default function MoviesPage() {
 					className={`px-4 py-2 rounded ${
 						currentPage === totalPages
 							? "bg-gray-300 text-gray-500 cursor-not-allowed"
-							: "bg-blue-600 text-white hover:bg-blue-500"
+							: "bg-blue-600 text-white hover:bg-blue-500 cursor-pointer"
 					}`}
 				>
 					Next
