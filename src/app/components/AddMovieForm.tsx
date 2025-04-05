@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Movie } from "@/app/types/movie";
 import TagInput from "@/app/components/TagInput";
 import { v4 as uuidv4 } from "uuid";
+import React from "react";
 
 export default function AddMovieForm({
 	onAdd,
