@@ -236,7 +236,12 @@ export default function Home() {
 							<p>Release Date: {movie.releaseDate}</p>
 							<p>Rating: {movie.rating}</p>
 							<Link href={`/movies/${movie.id}`}>View Details</Link>
-							<button onClick={() => handleEdit(movie)}>Edit</button>
+							<button
+								onClick={() => handleEdit(movie)}
+								style={{ marginLeft: "10px" }}
+							>
+								Edit
+							</button>
 							<button onClick={() => handleDelete(movie.id)}>Delete</button>
 						</li>
 					);
