@@ -26,15 +26,12 @@ export default function Home() {
 	const itemsPerPage = 5;
 
 	useEffect(() => {
-		try {
-			const initialMovies = movieService.getAllMovies();
-			if (!initialMovies || initialMovies.length === 0) {
-				console.warn("No movies found in MovieService.");
-			}
-			setMovies(initialMovies);
-		} catch (err) {
-			console.error("Failed to fetch movies:", err);
+		async function fetchMovies() {
+			const response = await fetch("/api/movies");
+			const data = await response.json();
+			setMovies(data);
 		}
+		fetchMovies();
 	}, []);
 
 	const validateMovie = (): boolean => {
