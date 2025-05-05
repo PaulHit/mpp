@@ -45,6 +45,16 @@ export default function Charts({ movies }: ChartsProps) {
 		}
 	});
 
+	// Calculate release year distribution
+	const releaseYearCounts = movies.reduce(
+		(acc: Record<string, number>, movie) => {
+			const releaseYear = new Date(movie.releaseDate).getFullYear().toString();
+			acc[releaseYear] = (acc[releaseYear] || 0) + 1;
+			return acc;
+		},
+		{}
+	);
+
 	// Chart options
 	const chartOptions = {
 		responsive: true,
@@ -88,6 +98,21 @@ export default function Charts({ movies }: ChartsProps) {
 							label: "Number of Movies",
 							data: ratingCounts,
 							backgroundColor: "#36A2EB",
+						},
+					],
+				}}
+				options={chartOptions}
+			/>
+
+			<h3>Release Year Distribution</h3>
+			<Bar
+				data={{
+					labels: Object.keys(releaseYearCounts),
+					datasets: [
+						{
+							label: "Number of Movies",
+							data: Object.values(releaseYearCounts),
+							backgroundColor: "#FF9F40",
 						},
 					],
 				}}
