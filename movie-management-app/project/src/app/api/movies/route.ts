@@ -77,27 +77,28 @@ export async function POST(request: Request) {
 	}
 }
 
-// PATCH: Update an existing movie
 export async function PATCH(request: Request) {
 	const body = await request.json();
 
 	try {
-		const updatedMovie = movieSchema.parse(body);
-		const index = movies.findIndex((movie) => movie.id === updatedMovie.id);
+		// Allow partial updates by making all fields optional
+		const partialMovieSchema = movieSchema.partial();
+		const partialMovie = partialMovieSchema.parse(body); // Validate the input
 
+		// Check if the movie exists
+		const index = movies.findIndex((movie) => movie.id === partialMovie.id);
 		if (index === -1) {
 			return NextResponse.json({ error: "Movie not found" }, { status: 404 });
 		}
 
-		movies[index] = { ...movies[index], ...updatedMovie };
+		// Update the movie with the provided fields
+		movies[index] = { ...movies[index], ...partialMovie };
 		return NextResponse.json(movies[index]);
 	} catch (error) {
-		// Check if the error is a Zod validation error
 		if (error instanceof z.ZodError) {
 			return NextResponse.json({ error: error.errors }, { status: 400 });
 		}
 
-		// Handle other unexpected errors
 		return NextResponse.json(
 			{ error: "An unexpected error occurred" },
 			{ status: 500 }
