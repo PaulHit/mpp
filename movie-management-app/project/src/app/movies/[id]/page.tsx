@@ -55,19 +55,21 @@ export default function Home() {
 		return true;
 	};
 
-	const handleCreateOrUpdate = () => {
+	const handleCreateOrUpdate = async () => {
 		if (!validateMovie()) return;
 
 		if (isEditing) {
 			// Update existing movie
-			movieService.updateMovie(newMovie); // Update the movie in the service
-			setMovies(movieService.getAllMovies()); // Refresh the movies list
+			await movieService.updateMovie(newMovie); // Update the movie in the service
+			const updatedMovies = await movieService.getAllMovies(); // Refresh the movies list
+			setMovies(updatedMovies);
 			setIsEditing(false);
 		} else {
 			// Create new movie
 			const newMovieWithId = { ...newMovie, id: Date.now().toString() };
-			movieService.addMovie(newMovieWithId); // Add the movie to the service
-			setMovies(movieService.getAllMovies()); // Refresh the movies list
+			await movieService.addMovie(newMovieWithId); // Add the movie to the service
+			const updatedMovies = await movieService.getAllMovies(); // Refresh the movies list
+			setMovies(updatedMovies);
 		}
 		setNewMovie({
 			id: "",
@@ -86,9 +88,10 @@ export default function Home() {
 		setShowForm(true); // Show the form when editing
 	};
 
-	const handleDelete = (id: string) => {
-		movieService.deleteMovie(id); // Delete the movie from the service
-		setMovies(movieService.getAllMovies()); // Refresh the movies list
+	const handleDelete = async (id: string) => {
+		await movieService.deleteMovie(id); // Delete the movie from the service
+		const updatedMovies = await movieService.getAllMovies(); // Refresh the movies list
+		setMovies(updatedMovies);
 	};
 
 	const handleSort = (criteria: string) => {
@@ -239,7 +242,9 @@ export default function Home() {
 							>
 								Edit
 							</button>
-							<button onClick={() => handleDelete(movie.id)}>Delete</button>
+							<button onClick={() => movie.id && handleDelete(movie.id)}>
+								Delete
+							</button>
 						</li>
 					);
 				})}

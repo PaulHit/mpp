@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { Movie } from "@/domain/Movie";
-import { mockMovies } from "@/data/mockMovies";
-
-// In-memory database (replace with a real database in production)
-let movies: Movie[] = [...mockMovies];
+import { MovieRepository } from "@/repositories/MovieRepository";
 
 // Movie schema for validation
 const movieSchema = z.object({
@@ -20,87 +17,85 @@ const movieSchema = z.object({
 
 // GET: Fetch all movies (with optional filtering and sorting)
 export async function GET(request: Request) {
-	const url = new URL(request.url);
-	const filter = url.searchParams.get("filter");
-	const sort = url.searchParams.get("sort");
-
-	let filteredMovies = [...movies];
-
-	// Apply filtering
-	if (filter) {
-		filteredMovies = filteredMovies.filter((movie) =>
-			movie.name.toLowerCase().includes(filter.toLowerCase())
-		);
-	}
-
-	// Apply sorting
-	if (sort === "rating") {
-		filteredMovies.sort((a, b) => b.rating - a.rating);
-	} else if (sort === "releaseDate") {
-		filteredMovies.sort(
-			(a, b) =>
-				new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
-		);
-	}
-
-	return NextResponse.json(filteredMovies);
-}
-
-// POST: Add a new movie
-export async function POST(request: Request) {
-	const body = await request.json();
-
 	try {
-		// Parse and validate the input
-		const parsedMovie = movieSchema.parse(body);
+		const url = new URL(request.url);
+		const filter = url.searchParams.get("filter");
+		const sort = url.searchParams.get("sort");
 
-		// Ensure `id` and `description` are always defined
-		const newMovie: Movie = {
-			...parsedMovie,
-			id: Date.now().toString(), // Generate a unique ID
-			description: parsedMovie.description || "", // Provide a default value for description
-		};
+		const movieRepository = MovieRepository.getInstance();
+		const movies = await movieRepository.getAllMovies(
+			filter || undefined,
+			sort || undefined
+		);
 
-		movies.push(newMovie); // Push the validated movie into the array
-		return NextResponse.json(newMovie, { status: 201 });
+		return NextResponse.json(movies);
 	} catch (error) {
-		// Handle validation errors
-		if (error instanceof z.ZodError) {
-			return NextResponse.json({ error: error.errors }, { status: 400 });
-		}
-
-		// Handle other unexpected errors
+		console.error("Error fetching movies:", error);
 		return NextResponse.json(
-			{ error: "An unexpected error occurred" },
+			{ error: "Failed to fetch movies" },
 			{ status: 500 }
 		);
 	}
 }
 
-export async function PATCH(request: Request) {
-	const body = await request.json();
-
+// POST: Add a new movie
+export async function POST(request: Request) {
 	try {
-		// Allow partial updates by making all fields optional
-		const partialMovieSchema = movieSchema.partial();
-		const partialMovie = partialMovieSchema.parse(body); // Validate the input
+		const body = await request.json();
+		const parsedMovie = movieSchema.parse(body);
 
-		// Check if the movie exists
-		const index = movies.findIndex((movie) => movie.id === partialMovie.id);
-		if (index === -1) {
-			return NextResponse.json({ error: "Movie not found" }, { status: 404 });
-		}
+		const movieRepository = MovieRepository.getInstance();
+		const newMovie = await movieRepository.addMovie({
+			name: parsedMovie.name,
+			genres: parsedMovie.genres,
+			releaseDate: parsedMovie.releaseDate,
+			rating: parsedMovie.rating,
+			description: parsedMovie.description || "",
+		});
 
-		// Update the movie with the provided fields
-		movies[index] = { ...movies[index], ...partialMovie };
-		return NextResponse.json(movies[index]);
+		return NextResponse.json(newMovie, { status: 201 });
 	} catch (error) {
 		if (error instanceof z.ZodError) {
 			return NextResponse.json({ error: error.errors }, { status: 400 });
 		}
 
+		console.error("Error adding movie:", error);
+		return NextResponse.json({ error: "Failed to add movie" }, { status: 500 });
+	}
+}
+
+// PATCH: Update a movie
+export async function PATCH(request: Request) {
+	try {
+		const body = await request.json();
+		const parsedMovie = movieSchema.parse(body);
+
+		if (!parsedMovie.id) {
+			return NextResponse.json(
+				{ error: "Movie ID is required for update" },
+				{ status: 400 }
+			);
+		}
+
+		const movieRepository = MovieRepository.getInstance();
+		const updatedMovie = await movieRepository.updateMovie({
+			id: parsedMovie.id,
+			name: parsedMovie.name,
+			genres: parsedMovie.genres,
+			releaseDate: parsedMovie.releaseDate,
+			rating: parsedMovie.rating,
+			description: parsedMovie.description || "",
+		});
+
+		return NextResponse.json(updatedMovie);
+	} catch (error) {
+		if (error instanceof z.ZodError) {
+			return NextResponse.json({ error: error.errors }, { status: 400 });
+		}
+
+		console.error("Error updating movie:", error);
 		return NextResponse.json(
-			{ error: "An unexpected error occurred" },
+			{ error: "Failed to update movie" },
 			{ status: 500 }
 		);
 	}
@@ -108,19 +103,26 @@ export async function PATCH(request: Request) {
 
 // DELETE: Remove a movie
 export async function DELETE(request: Request) {
-	const url = new URL(request.url);
-	const id = url.searchParams.get("id");
+	try {
+		const url = new URL(request.url);
+		const id = url.searchParams.get("id");
 
-	if (!id) {
-		return NextResponse.json({ error: "ID is required" }, { status: 400 });
+		if (!id) {
+			return NextResponse.json(
+				{ error: "Movie ID is required" },
+				{ status: 400 }
+			);
+		}
+
+		const movieRepository = MovieRepository.getInstance();
+		await movieRepository.deleteMovie(id);
+
+		return NextResponse.json({ message: "Movie deleted successfully" });
+	} catch (error) {
+		console.error("Error deleting movie:", error);
+		return NextResponse.json(
+			{ error: "Failed to delete movie" },
+			{ status: 500 }
+		);
 	}
-
-	const index = movies.findIndex((movie) => movie.id === id);
-
-	if (index === -1) {
-		return NextResponse.json({ error: "Movie not found" }, { status: 404 });
-	}
-
-	movies.splice(index, 1);
-	return NextResponse.json({ message: "Movie deleted successfully" });
 }
