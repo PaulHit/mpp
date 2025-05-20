@@ -1,0 +1,356 @@
+2025-05-20 22:52:47,519 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2025-05-20 22:52:47,550 INFO o.a.j.JMeter: Loading user properties from: /usr/local/Cellar/jmeter/5.6.3/libexec/bin/user.properties
+2025-05-20 22:52:47,551 INFO o.a.j.JMeter: Loading system properties from: /usr/local/Cellar/jmeter/5.6.3/libexec/bin/system.properties
+2025-05-20 22:52:47,558 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2025-05-20 22:52:47,558 INFO o.a.j.JMeter: Version 5.6.3
+2025-05-20 22:52:47,559 INFO o.a.j.JMeter: java.version=21.0.7
+2025-05-20 22:52:47,559 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2025-05-20 22:52:47,559 INFO o.a.j.JMeter: os.name=Mac OS X
+2025-05-20 22:52:47,559 INFO o.a.j.JMeter: os.arch=x86_64
+2025-05-20 22:52:47,559 INFO o.a.j.JMeter: os.version=15.4.1
+2025-05-20 22:52:47,559 INFO o.a.j.JMeter: file.encoding=UTF-8
+2025-05-20 22:52:47,559 INFO o.a.j.JMeter: java.awt.headless=true
+2025-05-20 22:52:47,559 INFO o.a.j.JMeter: Max memory     =1073741824
+2025-05-20 22:52:47,559 INFO o.a.j.JMeter: Available Processors =16
+2025-05-20 22:52:47,572 INFO o.a.j.JMeter: Default Locale=English (EN)
+2025-05-20 22:52:47,573 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2025-05-20 22:52:47,573 INFO o.a.j.JMeter: JMeterHome=/usr/local/Cellar/jmeter/5.6.3/libexec
+2025-05-20 22:52:47,573 INFO o.a.j.JMeter: user.dir  =/Users/paul/UBB/mpp/movie-management-app/project
+2025-05-20 22:52:47,573 INFO o.a.j.JMeter: PWD       =/Users/paul/UBB/mpp/movie-management-app/project
+2025-05-20 22:52:47,574 INFO o.a.j.JMeter: IP: 192.168.0.111 Name: paul-macbook.local FullName: 192.168.0.111
+2025-05-20 22:52:47,601 INFO o.a.j.s.FileServer: Default base='/Users/paul/UBB/mpp/movie-management-app/project'
+2025-05-20 22:52:47,603 INFO o.a.j.s.FileServer: Set new base='/Users/paul/UBB/mpp/movie-management-app/project/tests/jmeter'
+2025-05-20 22:52:47,872 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2025-05-20 22:52:47,925 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2025-05-20 22:52:47,930 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2025-05-20 22:52:47,934 INFO o.a.j.s.SaveService: Loading file: tests/jmeter/movie-api-test.jmx
+2025-05-20 22:52:48,020 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-05-20 22:52:48,020 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-05-20 22:52:48,020 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-05-20 22:52:48,020 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2025-05-20 22:52:48,020 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2025-05-20 22:52:48,020 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2025-05-20 22:52:48,060 INFO o.a.j.JMeter: Creating summariser <summary>
+2025-05-20 22:52:48,082 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2025-05-20 22:52:48,083 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2025-05-20 22:52:48,083 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2025-05-20 22:52:48,089 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2025-05-20 22:52:48,089 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2025-05-20 22:52:48,203 INFO o.a.j.r.ClassFinder: Will scan jar /usr/local/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-1.9.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2025-05-20 22:52:48,358 INFO o.a.j.JMeter: Running test (1747770768358)
+2025-05-20 22:52:48,388 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Movie API Thread Group
+2025-05-20 22:52:48,389 INFO o.a.j.e.StandardJMeterEngine: Starting 100 threads for group Movie API Thread Group.
+2025-05-20 22:52:48,389 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2025-05-20 22:52:48,389 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=100 ramp-up=10 delayedStart=false
+2025-05-20 22:52:48,398 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-1
+2025-05-20 22:52:48,432 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = paul-macbook.local
+2025-05-20 22:52:48,442 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2025-05-20 22:52:48,442 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2025-05-20 22:52:48,444 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2025-05-20 22:52:48,445 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2025-05-20 22:52:48,446 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2025-05-20 22:52:48,446 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2025-05-20 22:52:48,446 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2025-05-20 22:52:48,494 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-2
+2025-05-20 22:52:48,597 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-3
+2025-05-20 22:52:48,696 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-4
+2025-05-20 22:52:48,792 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-5
+2025-05-20 22:52:48,892 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-6
+2025-05-20 22:52:48,992 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-7
+2025-05-20 22:52:49,091 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-8
+2025-05-20 22:52:49,194 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-9
+2025-05-20 22:52:49,292 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-10
+2025-05-20 22:52:49,390 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-11
+2025-05-20 22:52:49,496 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-12
+2025-05-20 22:52:49,593 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-13
+2025-05-20 22:52:49,690 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-14
+2025-05-20 22:52:49,792 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-15
+2025-05-20 22:52:49,890 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-16
+2025-05-20 22:52:49,995 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-17
+2025-05-20 22:52:50,092 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-18
+2025-05-20 22:52:50,193 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-19
+2025-05-20 22:52:50,292 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-20
+2025-05-20 22:52:50,392 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-21
+2025-05-20 22:52:50,494 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-22
+2025-05-20 22:52:50,590 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-23
+2025-05-20 22:52:50,693 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-24
+2025-05-20 22:52:50,794 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-25
+2025-05-20 22:52:50,893 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-26
+2025-05-20 22:52:50,993 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-27
+2025-05-20 22:52:51,092 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-28
+2025-05-20 22:52:51,191 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-29
+2025-05-20 22:52:51,292 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-30
+2025-05-20 22:52:51,392 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-31
+2025-05-20 22:52:51,493 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-32
+2025-05-20 22:52:51,593 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-33
+2025-05-20 22:52:51,690 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-34
+2025-05-20 22:52:51,794 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-35
+2025-05-20 22:52:51,891 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-36
+2025-05-20 22:52:51,992 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-37
+2025-05-20 22:52:52,093 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-38
+2025-05-20 22:52:52,193 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-39
+2025-05-20 22:52:52,292 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-40
+2025-05-20 22:52:52,392 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-41
+2025-05-20 22:52:52,492 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-42
+2025-05-20 22:52:52,593 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-43
+2025-05-20 22:52:52,689 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-44
+2025-05-20 22:52:52,793 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-45
+2025-05-20 22:52:52,893 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-46
+2025-05-20 22:52:52,989 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-47
+2025-05-20 22:52:53,095 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-48
+2025-05-20 22:52:53,190 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-49
+2025-05-20 22:52:53,293 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-50
+2025-05-20 22:52:53,394 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-51
+2025-05-20 22:52:53,493 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-52
+2025-05-20 22:52:53,594 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-53
+2025-05-20 22:52:53,693 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-54
+2025-05-20 22:52:53,793 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-55
+2025-05-20 22:52:53,891 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-56
+2025-05-20 22:52:53,993 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-57
+2025-05-20 22:52:54,094 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-58
+2025-05-20 22:52:54,193 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-59
+2025-05-20 22:52:54,293 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-60
+2025-05-20 22:52:54,393 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-61
+2025-05-20 22:52:54,491 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-62
+2025-05-20 22:52:54,590 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-63
+2025-05-20 22:52:54,691 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-64
+2025-05-20 22:52:54,791 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-65
+2025-05-20 22:52:54,894 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-66
+2025-05-20 22:52:54,993 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-67
+2025-05-20 22:52:55,093 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-68
+2025-05-20 22:52:55,193 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-69
+2025-05-20 22:52:55,291 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-70
+2025-05-20 22:52:55,393 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-71
+2025-05-20 22:52:55,490 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-72
+2025-05-20 22:52:55,590 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-73
+2025-05-20 22:52:55,691 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-74
+2025-05-20 22:52:55,793 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-75
+2025-05-20 22:52:55,890 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-76
+2025-05-20 22:52:55,990 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-77
+2025-05-20 22:52:56,090 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-78
+2025-05-20 22:52:56,189 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-79
+2025-05-20 22:52:56,290 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-80
+2025-05-20 22:52:56,475 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-81
+2025-05-20 22:52:56,497 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-82
+2025-05-20 22:52:56,590 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-83
+2025-05-20 22:52:56,690 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-84
+2025-05-20 22:52:56,790 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-85
+2025-05-20 22:52:56,893 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-86
+2025-05-20 22:52:56,993 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-87
+2025-05-20 22:52:57,089 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-88
+2025-05-20 22:52:57,191 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-89
+2025-05-20 22:52:57,293 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-90
+2025-05-20 22:52:57,393 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-91
+2025-05-20 22:52:57,493 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-92
+2025-05-20 22:52:57,591 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-93
+2025-05-20 22:52:57,693 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-94
+2025-05-20 22:52:57,793 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-95
+2025-05-20 22:52:57,893 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-96
+2025-05-20 22:52:57,993 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-97
+2025-05-20 22:52:58,090 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-98
+2025-05-20 22:52:58,190 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-99
+2025-05-20 22:52:58,293 INFO o.a.j.t.JMeterThread: Thread started: Movie API Thread Group 1-100
+2025-05-20 22:53:00,003 INFO o.a.j.r.Summariser: summary +    532 in 00:00:12 =   45.7/s Avg:  1114 Min:   248 Max:  3194 Err:     0 (0.00%) Active: 100 Started: 100 Finished: 0
+2025-05-20 22:53:12,753 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-1
+2025-05-20 22:53:12,753 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-1
+2025-05-20 22:53:12,899 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-11
+2025-05-20 22:53:12,899 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-11
+2025-05-20 22:53:12,900 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-8
+2025-05-20 22:53:12,901 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-8
+2025-05-20 22:53:13,046 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-9
+2025-05-20 22:53:13,046 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-9
+2025-05-20 22:53:13,134 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-6
+2025-05-20 22:53:13,134 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-6
+2025-05-20 22:53:13,136 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-12
+2025-05-20 22:53:13,136 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-12
+2025-05-20 22:53:14,933 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-15
+2025-05-20 22:53:14,934 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-15
+2025-05-20 22:53:15,172 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-10
+2025-05-20 22:53:15,173 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-10
+2025-05-20 22:53:15,204 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-3
+2025-05-20 22:53:15,204 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-3
+2025-05-20 22:53:15,254 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-17
+2025-05-20 22:53:15,254 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-17
+2025-05-20 22:53:15,341 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-2
+2025-05-20 22:53:15,342 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-2
+2025-05-20 22:53:15,342 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-7
+2025-05-20 22:53:15,342 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-7
+2025-05-20 22:53:16,117 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-27
+2025-05-20 22:53:16,117 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-27
+2025-05-20 22:53:16,703 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-4
+2025-05-20 22:53:16,703 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-4
+2025-05-20 22:53:17,191 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-18
+2025-05-20 22:53:17,191 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-18
+2025-05-20 22:53:17,194 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-20
+2025-05-20 22:53:17,194 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-20
+2025-05-20 22:53:17,240 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-13
+2025-05-20 22:53:17,240 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-13
+2025-05-20 22:53:17,248 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-5
+2025-05-20 22:53:17,248 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-5
+2025-05-20 22:53:17,314 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-16
+2025-05-20 22:53:17,314 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-16
+2025-05-20 22:53:17,356 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-26
+2025-05-20 22:53:17,357 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-26
+2025-05-20 22:53:17,360 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-19
+2025-05-20 22:53:17,379 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-19
+2025-05-20 22:53:17,569 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-14
+2025-05-20 22:53:17,569 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-14
+2025-05-20 22:53:18,590 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-21
+2025-05-20 22:53:18,590 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-21
+2025-05-20 22:53:19,378 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-23
+2025-05-20 22:53:19,379 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-23
+2025-05-20 22:53:19,964 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-28
+2025-05-20 22:53:19,964 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-28
+2025-05-20 22:53:19,977 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-22
+2025-05-20 22:53:19,977 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-22
+2025-05-20 22:53:20,039 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-33
+2025-05-20 22:53:20,039 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-33
+2025-05-20 22:53:20,172 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-39
+2025-05-20 22:53:20,172 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-39
+2025-05-20 22:53:20,173 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-29
+2025-05-20 22:53:20,174 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-29
+2025-05-20 22:53:20,540 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-32
+2025-05-20 22:53:20,540 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-32
+2025-05-20 22:53:20,823 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-31
+2025-05-20 22:53:20,823 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-31
+2025-05-20 22:53:20,823 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-37
+2025-05-20 22:53:20,823 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-37
+2025-05-20 22:53:21,407 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-25
+2025-05-20 22:53:21,407 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-25
+2025-05-20 22:53:21,504 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-24
+2025-05-20 22:53:21,504 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-24
+2025-05-20 22:53:21,678 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-36
+2025-05-20 22:53:21,678 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-36
+2025-05-20 22:53:21,852 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-50
+2025-05-20 22:53:21,852 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-50
+2025-05-20 22:53:21,862 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-49
+2025-05-20 22:53:21,862 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-49
+2025-05-20 22:53:21,869 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-41
+2025-05-20 22:53:21,869 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-41
+2025-05-20 22:53:21,870 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-35
+2025-05-20 22:53:21,871 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-35
+2025-05-20 22:53:23,082 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-44
+2025-05-20 22:53:23,083 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-44
+2025-05-20 22:53:23,721 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-38
+2025-05-20 22:53:23,721 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-38
+2025-05-20 22:53:23,736 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-30
+2025-05-20 22:53:23,736 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-30
+2025-05-20 22:53:23,793 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-40
+2025-05-20 22:53:23,793 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-40
+2025-05-20 22:53:23,821 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-59
+2025-05-20 22:53:23,821 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-59
+2025-05-20 22:53:23,824 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-45
+2025-05-20 22:53:23,824 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-45
+2025-05-20 22:53:23,869 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-53
+2025-05-20 22:53:23,870 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-53
+2025-05-20 22:53:23,982 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-42
+2025-05-20 22:53:23,982 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-42
+2025-05-20 22:53:23,996 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-47
+2025-05-20 22:53:23,996 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-47
+2025-05-20 22:53:23,998 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-34
+2025-05-20 22:53:23,998 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-34
+2025-05-20 22:53:23,999 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-51
+2025-05-20 22:53:23,999 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-51
+2025-05-20 22:53:24,015 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-55
+2025-05-20 22:53:24,015 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-55
+2025-05-20 22:53:24,027 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-67
+2025-05-20 22:53:24,027 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-67
+2025-05-20 22:53:24,029 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-71
+2025-05-20 22:53:24,030 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-71
+2025-05-20 22:53:24,129 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-52
+2025-05-20 22:53:24,130 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-52
+2025-05-20 22:53:24,147 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-85
+2025-05-20 22:53:24,147 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-85
+2025-05-20 22:53:24,180 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-66
+2025-05-20 22:53:24,181 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-66
+2025-05-20 22:53:24,445 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-46
+2025-05-20 22:53:24,445 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-46
+2025-05-20 22:53:24,487 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-56
+2025-05-20 22:53:24,487 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-56
+2025-05-20 22:53:24,490 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-57
+2025-05-20 22:53:24,490 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-57
+2025-05-20 22:53:24,499 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-61
+2025-05-20 22:53:24,500 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-61
+2025-05-20 22:53:24,586 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-48
+2025-05-20 22:53:24,587 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-48
+2025-05-20 22:53:24,587 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-65
+2025-05-20 22:53:24,587 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-65
+2025-05-20 22:53:24,679 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-64
+2025-05-20 22:53:24,679 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-64
+2025-05-20 22:53:24,775 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-58
+2025-05-20 22:53:24,775 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-58
+2025-05-20 22:53:24,808 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-54
+2025-05-20 22:53:24,808 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-54
+2025-05-20 22:53:24,834 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-63
+2025-05-20 22:53:24,835 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-63
+2025-05-20 22:53:24,925 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-84
+2025-05-20 22:53:24,925 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-84
+2025-05-20 22:53:24,925 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-83
+2025-05-20 22:53:24,925 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-83
+2025-05-20 22:53:24,993 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-43
+2025-05-20 22:53:24,993 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-43
+2025-05-20 22:53:24,999 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-62
+2025-05-20 22:53:24,999 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-62
+2025-05-20 22:53:25,030 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-68
+2025-05-20 22:53:25,031 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-68
+2025-05-20 22:53:25,094 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-87
+2025-05-20 22:53:25,094 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-87
+2025-05-20 22:53:25,227 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-82
+2025-05-20 22:53:25,227 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-82
+2025-05-20 22:53:25,353 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-60
+2025-05-20 22:53:25,353 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-60
+2025-05-20 22:53:25,354 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-79
+2025-05-20 22:53:25,354 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-79
+2025-05-20 22:53:25,357 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-69
+2025-05-20 22:53:25,357 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-69
+2025-05-20 22:53:25,432 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-73
+2025-05-20 22:53:25,432 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-73
+2025-05-20 22:53:25,443 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-72
+2025-05-20 22:53:25,444 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-72
+2025-05-20 22:53:25,535 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-78
+2025-05-20 22:53:25,535 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-78
+2025-05-20 22:53:25,621 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-77
+2025-05-20 22:53:25,621 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-77
+2025-05-20 22:53:25,635 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-92
+2025-05-20 22:53:25,635 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-92
+2025-05-20 22:53:25,891 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-88
+2025-05-20 22:53:25,891 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-88
+2025-05-20 22:53:25,893 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-86
+2025-05-20 22:53:25,893 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-86
+2025-05-20 22:53:25,973 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-89
+2025-05-20 22:53:25,973 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-89
+2025-05-20 22:53:25,978 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-90
+2025-05-20 22:53:25,978 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-90
+2025-05-20 22:53:25,999 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-70
+2025-05-20 22:53:25,999 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-70
+2025-05-20 22:53:26,040 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-91
+2025-05-20 22:53:26,041 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-91
+2025-05-20 22:53:26,043 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-96
+2025-05-20 22:53:26,043 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-96
+2025-05-20 22:53:26,047 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-93
+2025-05-20 22:53:26,047 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-93
+2025-05-20 22:53:26,232 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-80
+2025-05-20 22:53:26,232 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-80
+2025-05-20 22:53:26,341 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-81
+2025-05-20 22:53:26,342 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-81
+2025-05-20 22:53:26,370 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-99
+2025-05-20 22:53:26,370 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-99
+2025-05-20 22:53:26,371 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-76
+2025-05-20 22:53:26,371 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-76
+2025-05-20 22:53:26,377 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-75
+2025-05-20 22:53:26,377 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-75
+2025-05-20 22:53:26,468 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-100
+2025-05-20 22:53:26,468 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-100
+2025-05-20 22:53:26,471 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-74
+2025-05-20 22:53:26,472 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-74
+2025-05-20 22:53:26,475 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-95
+2025-05-20 22:53:26,475 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-95
+2025-05-20 22:53:26,739 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-94
+2025-05-20 22:53:26,739 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-94
+2025-05-20 22:53:26,768 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-97
+2025-05-20 22:53:26,768 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-97
+2025-05-20 22:53:26,918 INFO o.a.j.t.JMeterThread: Thread is done: Movie API Thread Group 1-98
+2025-05-20 22:53:26,918 INFO o.a.j.t.JMeterThread: Thread finished: Movie API Thread Group 1-98
+2025-05-20 22:53:26,919 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2025-05-20 22:53:26,920 INFO o.a.j.r.Summariser: summary +   1468 in 00:00:27 =   54.5/s Avg:  1563 Min:   221 Max:  3685 Err:     0 (0.00%) Active: 0 Started: 100 Finished: 100
+2025-05-20 22:53:26,920 INFO o.a.j.r.Summariser: summary =   2000 in 00:00:39 =   51.9/s Avg:  1444 Min:   221 Max:  3685 Err:     0 (0.00%)

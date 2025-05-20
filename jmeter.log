@@ -1,0 +1,29 @@
+2025-05-20 22:58:09,743 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2025-05-20 22:58:09,770 INFO o.a.j.JMeter: Loading user properties from: /usr/local/Cellar/jmeter/5.6.3/libexec/bin/user.properties
+2025-05-20 22:58:09,771 INFO o.a.j.JMeter: Loading system properties from: /usr/local/Cellar/jmeter/5.6.3/libexec/bin/system.properties
+2025-05-20 22:58:09,778 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2025-05-20 22:58:09,778 INFO o.a.j.JMeter: Version 5.6.3
+2025-05-20 22:58:09,778 INFO o.a.j.JMeter: java.version=21.0.7
+2025-05-20 22:58:09,778 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2025-05-20 22:58:09,778 INFO o.a.j.JMeter: os.name=Mac OS X
+2025-05-20 22:58:09,778 INFO o.a.j.JMeter: os.arch=x86_64
+2025-05-20 22:58:09,778 INFO o.a.j.JMeter: os.version=15.4.1
+2025-05-20 22:58:09,778 INFO o.a.j.JMeter: file.encoding=UTF-8
+2025-05-20 22:58:09,779 INFO o.a.j.JMeter: java.awt.headless=true
+2025-05-20 22:58:09,779 INFO o.a.j.JMeter: Max memory     =1073741824
+2025-05-20 22:58:09,779 INFO o.a.j.JMeter: Available Processors =16
+2025-05-20 22:58:09,789 INFO o.a.j.JMeter: Default Locale=English (EN)
+2025-05-20 22:58:09,789 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2025-05-20 22:58:09,789 INFO o.a.j.JMeter: JMeterHome=/usr/local/Cellar/jmeter/5.6.3/libexec
+2025-05-20 22:58:09,789 INFO o.a.j.JMeter: user.dir  =/Users/paul/UBB/mpp
+2025-05-20 22:58:09,789 INFO o.a.j.JMeter: PWD       =/Users/paul/UBB/mpp
+2025-05-20 22:58:09,791 INFO o.a.j.JMeter: IP: 192.168.0.111 Name: paul-macbook.local FullName: 192.168.0.111
+2025-05-20 22:58:09,810 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'/Users/paul/UBB/mpp/jmeter-report'
+2025-05-20 22:58:09,816 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
+2025-05-20 22:58:09,816 ERROR o.a.j.JMeter: An error occurred: 
+java.lang.IllegalArgumentException: Cannot read test results file : results.jtl
+	at org.apache.jmeter.report.dashboard.ReportGenerator.<init>(ReportGenerator.java:134) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeter.start(JMeter.java:484) [ApacheJMeter_core.jar:5.6.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.apache.jmeter.NewDriver.main(NewDriver.java:259) [ApacheJMeter.jar:5.6.3]
