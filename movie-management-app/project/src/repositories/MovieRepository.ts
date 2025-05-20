@@ -13,7 +13,11 @@ export class MovieRepository {
 		return MovieRepository.instance;
 	}
 
-	async getAllMovies(filter?: string, sort?: string): Promise<Movie[]> {
+	async getAllMovies(
+		filter?: string,
+		sort?: string,
+		order: "asc" | "desc" = "asc"
+	): Promise<Movie[]> {
 		let query = supabase.from("movies").select(`
 				id,
 				name,
@@ -25,14 +29,15 @@ export class MovieRepository {
 				)
 			`);
 
+		// Apply filter if provided
 		if (filter) {
-			query = query.ilike("name", `%${filter}%`);
+			query = query.or(`name.ilike.%${filter}%,description.ilike.%${filter}%`);
 		}
 
-		if (sort === "rating") {
-			query = query.order("rating", { ascending: false });
-		} else if (sort === "releaseDate") {
-			query = query.order("release_date", { ascending: false });
+		// Apply sorting if provided
+		if (sort) {
+			const sortField = sort === "releaseDate" ? "release_date" : sort;
+			query = query.order(sortField, { ascending: order === "asc" });
 		}
 
 		const { data, error } = await query;
@@ -104,15 +109,28 @@ export class MovieRepository {
 
 		// Add genres
 		for (const genreName of movie.genres) {
-			// First, ensure the genre exists
-			const { data: genreData, error: genreError } = await supabase
+			// First, try to get the existing genre
+			const { data: existingGenre } = await supabase
 				.from("genres")
-				.upsert({ name: genreName })
-				.select()
+				.select("id")
+				.eq("name", genreName)
 				.single();
 
-			if (genreError) {
-				throw new Error(`Error adding genre: ${genreError.message}`);
+			let genreId;
+			if (existingGenre) {
+				genreId = existingGenre.id;
+			} else {
+				// If genre doesn't exist, create it
+				const { data: newGenre, error: genreError } = await supabase
+					.from("genres")
+					.insert({ name: genreName })
+					.select()
+					.single();
+
+				if (genreError) {
+					throw new Error(`Error adding genre: ${genreError.message}`);
+				}
+				genreId = newGenre.id;
 			}
 
 			// Then create the movie-genre relationship
@@ -120,7 +138,7 @@ export class MovieRepository {
 				.from("movie_genres")
 				.insert({
 					movie_id: movieData.id,
-					genre_id: genreData.id,
+					genre_id: genreId,
 				});
 
 			if (relationError) {
@@ -164,15 +182,28 @@ export class MovieRepository {
 
 		// Add new genre relationships
 		for (const genreName of movie.genres) {
-			// First, ensure the genre exists
-			const { data: genreData, error: genreError } = await supabase
+			// First, try to get the existing genre
+			const { data: existingGenre } = await supabase
 				.from("genres")
-				.upsert({ name: genreName })
-				.select()
+				.select("id")
+				.eq("name", genreName)
 				.single();
 
-			if (genreError) {
-				throw new Error(`Error adding genre: ${genreError.message}`);
+			let genreId;
+			if (existingGenre) {
+				genreId = existingGenre.id;
+			} else {
+				// If genre doesn't exist, create it
+				const { data: newGenre, error: genreError } = await supabase
+					.from("genres")
+					.insert({ name: genreName })
+					.select()
+					.single();
+
+				if (genreError) {
+					throw new Error(`Error adding genre: ${genreError.message}`);
+				}
+				genreId = newGenre.id;
 			}
 
 			// Then create the movie-genre relationship
@@ -180,7 +211,7 @@ export class MovieRepository {
 				.from("movie_genres")
 				.insert({
 					movie_id: movie.id,
-					genre_id: genreData.id,
+					genre_id: genreId,
 				});
 
 			if (relationError) {

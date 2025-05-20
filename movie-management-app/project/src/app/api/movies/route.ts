@@ -21,11 +21,13 @@ export async function GET(request: Request) {
 		const url = new URL(request.url);
 		const filter = url.searchParams.get("filter");
 		const sort = url.searchParams.get("sort");
+		const order = url.searchParams.get("order") || "asc";
 
 		const movieRepository = MovieRepository.getInstance();
 		const movies = await movieRepository.getAllMovies(
 			filter || undefined,
-			sort || undefined
+			sort || undefined,
+			order as "asc" | "desc"
 		);
 
 		return NextResponse.json(movies);

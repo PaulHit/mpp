@@ -88,7 +88,7 @@ export class MovieService {
 	public async updateMovie(movie: Movie): Promise<void> {
 		if (this.networkService.getStatus() === "online") {
 			try {
-				const response = await fetch(`/api/movies/${movie.id}`, {
+				const response = await fetch("/api/movies", {
 					method: "PATCH",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(movie),

@@ -8,10 +8,13 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"test": "jest"
+		"test": "jest",
+		"generate-data": "ts-node src/scripts/generateData.ts",
+		"check-data": "ts-node src/scripts/checkData.ts"
 	},
 	"dependencies": {
-		"@supabase/supabase-js": "^2.49.4",
+		"@supabase/supabase-js": "^2.49.7",
+		"dotenv": "^16.5.0",
 		"next": "15.3.1",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
@@ -20,9 +23,10 @@
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",
+		"@faker-js/faker": "^9.8.0",
 		"@tailwindcss/postcss": "^4.1.6",
 		"@types/jest": "^29.5.14",
-		"@types/node": "^20",
+		"@types/node": "^20.17.49",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"@types/supertest": "^6.0.3",
@@ -34,6 +38,7 @@
 		"supertest": "^7.1.0",
 		"tailwindcss": "^4.1.6",
 		"ts-jest": "^29.3.2",
-		"typescript": "^5"
+		"ts-node": "^10.9.2",
+		"typescript": "^5.8.3"
 	}
 }
