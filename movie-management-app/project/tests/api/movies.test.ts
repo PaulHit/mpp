@@ -1,6 +1,13 @@
+require("dotenv").config({ path: ".env.local" });
+
+import { faker } from "@faker-js/faker";
+
 const request = require("supertest");
 const { GET, POST, PATCH, DELETE } = require("@/app/api/movies/route");
 const { mockMovies } = require("@/data/mockMovies");
+
+console.log("URL:", process.env.NEXT_PUBLIC_SUPABASE_URL);
+console.log("KEY:", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
 describe("Movies API", () => {
 	let movies = [...mockMovies];
