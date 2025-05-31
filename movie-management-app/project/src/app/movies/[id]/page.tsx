@@ -25,7 +25,20 @@ export default function MovieList() {
 	const [sortBy, setSortBy] = useState<string>("name");
 	const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 	const [currentPage, setCurrentPage] = useState<number>(1);
+	const [expandedMovies, setExpandedMovies] = useState<Set<string>>(new Set());
 	const itemsPerPage = 5;
+
+	const toggleDescription = (movieId: string) => {
+		setExpandedMovies((prev) => {
+			const newSet = new Set(prev);
+			if (newSet.has(movieId)) {
+				newSet.delete(movieId);
+			} else {
+				newSet.add(movieId);
+			}
+			return newSet;
+		});
+	};
 
 	useEffect(() => {
 		async function fetchMovies() {
@@ -249,22 +262,19 @@ export default function MovieList() {
 								</div>
 								<input
 									type="text"
-									placeholder="Type a genre and press Enter"
 									value={currentGenreInput}
-									onKeyDown={(e) => {
-										if (e.key === "Enter") {
+									onChange={(e) => setCurrentGenreInput(e.target.value)}
+									onKeyPress={(e) => {
+										if (e.key === "Enter" && currentGenreInput.trim()) {
 											e.preventDefault();
-											const value = currentGenreInput.trim();
-											if (value && !newMovie.genres.includes(value)) {
-												setNewMovie((prev) => ({
-													...prev,
-													genres: [...prev.genres, value],
-												}));
-												setCurrentGenreInput("");
-											}
+											setNewMovie((prev) => ({
+												...prev,
+												genres: [...prev.genres, currentGenreInput.trim()],
+											}));
+											setCurrentGenreInput("");
 										}
 									}}
-									onChange={(e) => setCurrentGenreInput(e.target.value)}
+									placeholder="Add a genre and press Enter"
 									className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
 								/>
 							</div>
@@ -279,108 +289,167 @@ export default function MovieList() {
 						/>
 						<input
 							type="number"
-							placeholder="Rating (1-10)"
 							min="1"
 							max="10"
-							value={newMovie.rating || ""}
-							onChange={(e) => {
-								const value = e.target.value;
-								const numValue =
-									value === "" ? 1 : Math.min(10, Math.max(1, Number(value)));
-								setNewMovie({ ...newMovie, rating: numValue });
-							}}
+							value={newMovie.rating}
+							onChange={(e) =>
+								setNewMovie({
+									...newMovie,
+									rating: parseInt(e.target.value) || 1,
+								})
+							}
 							className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
 						/>
 						<textarea
-							placeholder="Movie Description"
 							value={newMovie.description}
 							onChange={(e) =>
 								setNewMovie({ ...newMovie, description: e.target.value })
 							}
-							className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all min-h-[100px]"
+							placeholder="Movie Description"
+							className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+							rows={4}
 						/>
-						<button
-							onClick={handleCreateOrUpdate}
-							className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-500 focus:outline-none transition-all"
-						>
-							{isEditing ? "Update Movie" : "Add Movie"}
-						</button>
+						<div className="flex gap-2">
+							<button
+								onClick={handleCreateOrUpdate}
+								className="flex-1 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+							>
+								{isEditing ? "Update Movie" : "Add Movie"}
+							</button>
+							{isEditing && (
+								<button
+									onClick={() => {
+										setIsEditing(false);
+										setNewMovie({
+											id: "",
+											name: "",
+											genres: [],
+											releaseDate: "",
+											rating: 1,
+											description: "",
+										});
+									}}
+									className="flex-1 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition-colors"
+								>
+									Cancel
+								</button>
+							)}
+						</div>
 					</div>
 				</div>
 			)}
 
-			{/* Statistics */}
-			<div className="mb-4 p-4 border rounded">
-				<h2 className="text-xl font-bold mb-2">Statistics</h2>
-				<p>Highest Rated Movie: {highestRatedMovie.name || "N/A"}</p>
-				<p>Lowest Rated Movie: {lowestRatedMovie.name || "N/A"}</p>
-				<p>Average Rating: {averageRating.toFixed(1)}</p>
+			{/* Movie List */}
+			<div className="grid gap-4">
+				{paginatedMovies.map((movie) => (
+					<div
+						key={movie.id}
+						className="p-4 border border-gray-200 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow"
+					>
+						<div className="flex justify-between items-start gap-4">
+							<div className="flex-1">
+								<div className="flex items-center gap-2 mb-2">
+									<h3 className="text-xl font-semibold">{movie.name}</h3>
+									<span className="text-sm text-gray-500">
+										({movie.rating}/10)
+									</span>
+								</div>
+								<p className="text-gray-600 mb-1">
+									<span className="font-medium">Genres:</span>{" "}
+									{movie.genres.join(", ")}
+								</p>
+								<p className="text-gray-600 mb-2">
+									<span className="font-medium">Released:</span>{" "}
+									{movie.releaseDate}
+								</p>
+								<div className="flex items-center gap-3">
+									{movie.id && (
+										<>
+											{/* --- ACTION BUTTON ROW START --- */}
+											<div className="inline-flex gap-2 items-center bg-yellow-100 p-1 rounded-md action-btn-row">
+												<button
+													onClick={() => toggleDescription(movie.id as string)}
+													className="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-400 transition-colors"
+													type="button"
+												>
+													{expandedMovies.has(movie.id as string)
+														? "Hide Description"
+														: "Show Description"}
+												</button>
+												<button
+													onClick={() => handleEdit(movie)}
+													className="px-2 py-1 text-xs font-medium text-blue-700 bg-blue-100 border border-blue-300 rounded hover:bg-blue-200 focus:outline-none focus:ring-1 focus:ring-blue-400 transition-colors"
+													type="button"
+												>
+													Edit
+												</button>
+												{movie.id && (
+													<button
+														onClick={() => handleDelete(movie.id as string)}
+														className="px-2 py-1 text-xs font-medium text-red-700 bg-red-100 border border-red-300 rounded hover:bg-red-200 focus:outline-none focus:ring-1 focus:ring-red-400 transition-colors"
+														type="button"
+													>
+														Delete
+													</button>
+												)}
+											</div>
+											{/* --- ACTION BUTTON ROW END --- */}
+											{expandedMovies.has(movie.id as string) && (
+												<p className="mt-2 text-gray-700 italic">
+													{movie.description}
+												</p>
+											)}
+										</>
+									)}
+								</div>
+							</div>
+						</div>
+					</div>
+				))}
 			</div>
 
-			{/* Movie List */}
-			<ul className="space-y-4">
-				{paginatedMovies.map((movie) => {
-					let backgroundColor = "bg-white";
-					if (movie.id === highestRatedMovie.id)
-						backgroundColor = "bg-green-100";
-					else if (movie.id === lowestRatedMovie.id)
-						backgroundColor = "bg-red-100";
-					else if (parseFloat(movie.rating.toFixed(1)) === averageRating)
-						backgroundColor = "bg-yellow-100";
-
-					return (
-						<li
-							key={movie.id}
-							className={`p-4 border rounded ${backgroundColor}`}
-						>
-							<h2 className="text-xl font-bold">{movie.name}</h2>
-							<p>Genres: {movie.genres.join(", ")}</p>
-							<p>Release Date: {movie.releaseDate}</p>
-							<p>Rating: {movie.rating}</p>
-							<div className="mt-2 space-x-2">
-								<Link
-									href={`/movies/${movie.id}`}
-									className="text-blue-500 hover:underline"
-								>
-									View Details
-								</Link>
-								<button
-									onClick={() => handleEdit(movie)}
-									className="text-green-500 hover:underline"
-								>
-									Edit
-								</button>
-								<button
-									onClick={() => movie.id && handleDelete(movie.id)}
-									className="text-red-500 hover:underline"
-								>
-									Delete
-								</button>
-							</div>
-						</li>
-					);
-				})}
-			</ul>
-
-			{/* Pagination Controls */}
-			<div className="mt-4 flex items-center justify-center space-x-2">
+			{/* Pagination */}
+			<div className="flex justify-center gap-2 mt-6">
 				<button
 					onClick={() => handlePageChange(currentPage - 1)}
 					disabled={currentPage === 1}
-					className="px-4 py-2 border rounded disabled:opacity-50"
+					className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
 				>
 					Previous
 				</button>
-				<span>
+				<span className="px-4 py-2">
 					Page {currentPage} of {totalPages}
 				</span>
 				<button
 					onClick={() => handlePageChange(currentPage + 1)}
 					disabled={currentPage === totalPages}
-					className="px-4 py-2 border rounded disabled:opacity-50"
+					className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
 				>
 					Next
 				</button>
+			</div>
+
+			{/* Statistics */}
+			<div className="mt-8 p-6 bg-gray-50 rounded-lg shadow-sm">
+				<h2 className="text-xl font-bold mb-4">Movie Statistics</h2>
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+					<div className="p-4 bg-white rounded-lg shadow-sm">
+						<h3 className="font-semibold text-gray-700">Highest Rated</h3>
+						<p className="text-2xl font-bold text-blue-600">
+							{highestRatedMovie.name} ({highestRatedMovie.rating})
+						</p>
+					</div>
+					<div className="p-4 bg-white rounded-lg shadow-sm">
+						<h3 className="font-semibold text-gray-700">Lowest Rated</h3>
+						<p className="text-2xl font-bold text-blue-600">
+							{lowestRatedMovie.name} ({lowestRatedMovie.rating})
+						</p>
+					</div>
+					<div className="p-4 bg-white rounded-lg shadow-sm">
+						<h3 className="font-semibold text-gray-700">Average Rating</h3>
+						<p className="text-2xl font-bold text-blue-600">{averageRating}</p>
+					</div>
+				</div>
 			</div>
 
 			{/* Charts */}

@@ -1,5 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
+import { createBrowserClient } from "@supabase/ssr";
 import * as dotenv from "dotenv";
+import { CookieOptions } from "@supabase/ssr";
 
 // Load environment variables
 dotenv.config();
@@ -7,8 +8,9 @@ dotenv.config();
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl) throw new Error("Missing env.NEXT_PUBLIC_SUPABASE_URL");
-if (!supabaseAnonKey)
-	throw new Error("Missing env.NEXT_PUBLIC_SUPABASE_ANON_KEY");
+if (!supabaseUrl || !supabaseAnonKey) {
+	throw new Error("Missing Supabase environment variables");
+}
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Create a single supabase client for interacting with your database
+export const supabase = createBrowserClient(supabaseUrl, supabaseAnonKey);
