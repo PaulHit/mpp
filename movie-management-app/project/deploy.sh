@@ -10,7 +10,7 @@ fi
 
 # Variables
 PROJECT_ID="movie-management-mpp"
-REGION="us-central1"              # Replace with your preferred region
+REGION="us-central1"
 SERVICE_NAME="movie-management-app"
 IMAGE_NAME="gcr.io/${PROJECT_ID}/${SERVICE_NAME}"
 
