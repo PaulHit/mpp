@@ -1,9 +1,4 @@
 import { createBrowserClient } from "@supabase/ssr";
-import * as dotenv from "dotenv";
-import { CookieOptions } from "@supabase/ssr";
-
-// Load environment variables
-dotenv.config();
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
